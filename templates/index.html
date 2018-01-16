@@ -1,0 +1,73 @@
+<html>
+    <head>
+        <title>{% block title %}Splatoon 2 Battle Viewer{% endblock %}</title>
+        {% block stylesheet %} <link rel= "stylesheet" type= "text/css" href="{{ url_for('static',filename='css/styles.css') }}"> {% endblock %}
+    </head>
+    <body>
+        {% block content %}
+        <div class='content-wrapper index'>
+          <img src='https://vignette3.wikia.nocookie.net/splatoon/images/1/13/Green_Inkling_-_Splatoon_2.png/revision/latest/scale-to-width-down/2000?cb=20170113230945' class='index-wrappers' alt='snazzy inkling boy shooting splattershot'>
+          <div id='right-index-wrapper' class='index-wrappers'>
+                <div class='navi-buttons'>
+                    <div class='help'>
+                        <p>
+                            In order to view or update your battle stats, you must have your NSOnline Splatoon 2 cookie - also known as the iksm_session.
+                            To get that, you have to use a web debugging/capturing tool such as mitmproxy or Fiddler.</p>
+                        <p>
+                            Use the guide <a href='https://bitbucket.org/chococakes/splathelper/wiki/Using%20Fiddler%20to%20Get%20Your%20SplatNet%20Cookie'>here</a> to get the cookie using Fiddler!
+                            Once you have the iksm_session cookie, type it in here and view your stats! The cookie should be forty characters long.
+                        </p>
+                        <p>
+                            If you've already used this site to view stats, you should have been given an ID on the viewer page.
+                            You can also enter that here to view saved data! Keep in mind that you <i>need</i> the iksm_session cookie to update the data with your latest battles.
+                            Your ID should be sixteen characters long.
+                        </p>
+                        <p>
+                            Give it a try with the ID "eb25cb0e499d5911".
+                        </p>
+                    </div>
+                    <form action='viewer' method='post'>
+                        <p class='form-inputs'>{{ form.cookie }}</p>
+                        {% if form.cookie.errors %}
+                            <ul class='help'>
+                                {% for error in form.cookie.errors %}
+                                    <li>{{ error }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                        <input class='redirect-buttons' type='submit' value='View Your Battle Statistics'>
+                    </form>
+                </div>
+          </div>
+        {% block footer %}
+            <div class='footer'>
+                <p>Splatoon and all related properties on this website are the property of Nintendo.</p>
+                <p><a href='#' id='show-about'>about me </a></p>
+                <p><a href='#' id='show-credits'> credits</a>
+                <div class='about-popup credit-popup opacity-provider'></div>
+                <div class='about-popup popup'>
+                    <p id='discord'>Add me on Discord if you'd like - I'm DestinyWaffle#1009.</p>
+                    <p>Hello, I'm Choco. I'm just a fourteen year old girl who likes inking turf. This has been my first site, and it's been quite the learning experience.</p>
+                    <p>Since I love Splatoon, I figured I would make something that could show me how well/terribly I play. I made a python console application and started to leave it as that, but then I decided to give web development a shot, since I'd never really <i>done</i> it before. What better idea to start with? I didn't exactly think it would be <i>easy,</i> but I didn't think it would be that hard.</p>
+                    <p>Was I wrong? Maybe.</p>
+                    <p>I don't really have the best eye for design. Learning how to position elements, learning how to use the Flask framework, learning how to use templates... It's been something. I've gotten most of my information from Google - I haven't really asked for help from actual people except for the odd small question on Discord. I looked at other Splatoon sites, such as <a href='https://splatoon2.ink/'>splatoon2.ink</a> and <a href='https://loadout.ink/'>loadout.ink</a> for a design guideline. Without those sites, I probably would have been even more clueless.</p>
+                    <p> Anyway, I'm still proud of it. It's one of the first times I've set a goal and actually did something close to ""finishing it"" - although I'm still looking for ways to improve it - so it's quite the personal accomplishment for me. It may not look the best, but it's <i>my</i> best so far, and I'm happy.</p>
+                    <p>Oof. This got kind of rambly. Anyway, thanks for using the site! I hope it's useful to you :></p>
+                    <p><a href='#' class='close' id='close-about'>Close</a></p>
+                </div>
+                <div class='credit-popup popup'>
+                    <p>Credits to <a href='https://splatoon2.ink/'>splatoon2.ink</a> and <a href='https://loadout.ink/'>loadout.ink</a> for the design ideas and backgrounds.</p>
+                    <p>Credit to my friends for offering encouraging words on my progress. Love you guys.</p>
+                    <p>Credit to the people who worked on the <a href='https://github.com/ZekeSnider/NintendoSwitchRESTAPI/blob/master/Splatoon2Blueprint.md'>Splatoon 2 blueprint.</a> It certainly helped me a ton while working on this.</p>
+                    <p>Credit to the people who worked on <a href='https://github.com/frozenpandaman/splatnet2statink'>splatnet2statink</a> for their open-source code. It helped me figure out how to use the API in python.</p>
+                    <p><a href='#' class='close' id='close-credits'>Close</a></p>
+                </div>
+            </div>
+        {% endblock %}
+        </div>
+        {% endblock %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="{{url_for('static', filename='js/jquery-3.2.1.min.js') }}">\x3C/script>')</script>
+    <script src="{{ url_for('static', filename='js/splat2.js') }}"></script>
+    </body>
+</html>

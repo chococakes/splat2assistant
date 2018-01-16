@@ -1,0 +1,81 @@
+{% extends 'index.html' %}
+{% block title %} {{ super() }} {% endblock %}
+{% block stylesheet %} {{ super() }} {% endblock %}
+{% block content %}
+<div class='content-wrapper viewer-home'>
+  <div class='results-wrapper'>
+      <table class='results'>
+        <tr>
+          <th>Battle ID</th>
+          <th>Mode</th>
+          <th>Game Type</th>
+          <th>Outcome</th>
+          <th>Splats</th>
+          <th>Deaths</th>
+          <th>Weapon Used</th>
+        </tr>
+        {% for result in results %}
+          <tr>
+            <td><a href="{{ url_for('indiv_viewer', cookie=cookie, id=result['battle_number']) }}">{{ result['battle_number'] }}</a></td>
+            <td>{{ result['game_mode'] }}</td>
+            <td>{{ result['type'] }}</td>
+            <td>{{ result['outcome'] }}</td>
+            <td class='num-columns'>{{ result['player_kills'] }}</td>
+            <td class='num-columns'>{{ result['player_deaths'] }}</td>
+            <td>{{ result['player_weapon'] }}</td>
+          </tr>
+        {% endfor %}
+      </table>
+  </div>
+  <div class='sidebar-wrapper'>
+    <p id='id-display'>Player ID: {{ player_id }}</p>
+    <p>
+      If you want to view more information about a specific battle and have entered your iksm_session cookie in already, just click on the battle ID. Otherwise, the feature won't work.
+      Data is sorted from most recent to least.
+      Data is captured from the Nintendo Switch Online app using the Splatoon 2 API.</p>
+    <div id='stats'>
+      <p>Total Games: {{ results|length }}</p>
+      <p>Total Splats/Deaths: {{ summary['total_kills'] }}/{{ summary['total_deaths'] }}</p>
+      <p>Average Deaths Per Game: {{ summary['d_average'] }}</p>
+      <p>Average Splats Per Game: {{ summary['k_average'] }}</p>
+      <p>Average Specials Per Game: {{ summary['spec_average'] }}</p>
+      <p>Average Assists Per Game: {{ summary['as_average'] }}</p>
+      <p>In total, you win {{ summary['vic_percent'] }} of games and lose {{ summary['def_percent'] }} of them.</p>
+    </div>
+  </div>
+  <div class='sidebar-wrapper'>
+    <p>Here's how well you do with each weapon based on the above data. You're quite the player! \ (•◡•) /</p>
+    <p>Total % of wins and losses refer to how much of your wins/losses (including ALL weapons) were achieved using the weapon.</p>
+    <p>The weapon ratio is how your total wins compares to your amount of plays. For example. if the ratio was 65%, that means that you have won 65% of the times you used the weapon.</p>
+  </div>
+  <div class='results-wrapper'>
+    <table class='results'>
+      <tr>
+        <th>Weapon</th>
+        <th>Plays</th>
+        <th>Wins</th>
+        <th>Losses</th>
+        <th>Splats</th>
+        <th>Deaths</th>
+        <th>% of Wins</th>
+        <th>% of Losses</th>
+        <th>Weapon Ratio</th>
+      </tr>
+      {% for weapon in weapons %}
+        <tr>
+          <td>{{ weapon['name'] }}</td>
+          <td class='num-columns'>{{ weapon['plays'] }}</td>
+          <td class='num-columns'>{{ weapon['wins'] }}</td>
+          <td class='num-columns'>{{ weapon['losses'] }}</td>
+          <td class='num-columns'>{{ weapon['kills'] }}</td>
+          <td class='num-columns'>{{ weapon['deaths'] }}</td>
+          <td>{{ weapon['win_percent'] }}</td>
+          <td>{{ weapon['loss_percent'] }}</td>
+          <td>{{ weapon['ratio'] }}</td>
+        </tr>
+      {% endfor %}
+    </table>
+  </div>
+{% block footer %} {{ super() }} {% endblock %}
+</div>
+{% endblock %}

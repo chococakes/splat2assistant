@@ -1,0 +1,121 @@
+{% extends 'index.html' %}
+{% block title %} {{ super() }} {% endblock %}
+{% block stylesheet %} {{ super() }} {% endblock %}
+{% block content %} <!-- This crap needs a loading screen -->
+  <div class='content-wrapper viewer-indiv'>
+    <div id='enemy-wrapper' class='indiv-wrappers'>
+      {% for enemy in enemies %}
+          <div id='enemy-result' class='battle-results'>
+              <div class='div-container'>
+                  <img class='main-images' src="{{ url_for('static', filename=enemy.head_img) }}" title='{{ enemy.head }}'>
+                  <img class='skill-images' src="{{ url_for('static', filename=enemy.head_skill) }}">
+                  {% for sub in enemy.head_subs %}
+                      <img class='sub-images' src="{{ url_for('static', filename=sub) }}">
+                  {% endfor %}
+              </div>
+              <div class='div-container'>
+                  <img class='main-images' src="{{ url_for('static', filename=enemy.clothes_img) }}" title='{{ enemy.clothes }}'>
+                  <img class='skill-images' src="{{ url_for('static', filename=enemy.clothes_skill) }}">
+                  {% for sub in enemy.clothes_subs %}
+                      <img class='sub-images' src="{{ url_for('static', filename=sub) }}">
+                  {% endfor %}
+              </div>
+              <div class='div-container'>
+                  <img class='main-images' src="{{ url_for('static', filename=enemy.shoes_img) }}" title='{{ enemy.shoes }}'>
+                  <img class='skill-images' src="{{ url_for('static', filename=enemy.shoes_skill) }}">
+                  {% for sub in enemy.shoes_subs %}
+                      <img class='sub-images' src="{{ url_for('static', filename=sub) }}">
+                  {% endfor %}
+              </div>
+              <div class='gear-container'>
+                  <img class='weapon_images' src="{{ url_for('static', filename=enemy.weapon_img) }}">
+                  <img class='weapon_details' src="{{ url_for('static', filename=enemy.weapon_sub) }}">
+                  <img class='weapon_details' src="{{ url_for('static', filename=enemy.weapon_special) }}">
+              </div>
+              <div>
+                  <table class='battle-data'>
+                      <tr>
+                        <td>Name: {{ enemy.name }}</td>
+                        <td>Level: {{ enemy.level }}</td>
+                      </tr>
+                      <tr>
+                        <td>Splats: {{ enemy.kills }}</td>
+                        <td>Turf Inked: {{ enemy.turf_inked }}</td>
+                      </tr>
+                      <tr>
+                          <td>Deaths: {{ enemy.deaths }}</td>
+                          <td>Assists: {{ enemy.assists }}</td>
+                      </tr>
+                      <tr>
+                          <td>Specials: {{ enemy.specials }}</td>
+                      </tr>
+                  </table>
+              </div>
+          </div>
+      {% endfor %}
+    </div>
+    <div id='results-wrapper' class='indiv-wrappers'>
+        <p style='font-size: 1.5em;'>&lt -- Bad Guys<br>-- > Good Guys</p>
+        <table>
+            <tr><td>Stage: {{result.stage}}</td></tr>
+            <tr><td>Outcome: {{result.outcome}}</td></tr>
+            <tr><td>Mode: {{result.mode}}</td></tr>
+            <tr><td>Game Type: {{result.type}}</td></tr>
+            <tr><td>Good Guys Percentage: {{result.my_team_percentage}} </td></tr>
+            <tr><td>Bad Guys Percentage: {{result.enemy_team_percentage}}</td></tr>
+        </table>
+    </div>
+    <div id='ally-wrapper' class='indiv-wrappers'>
+      {% for ally in allies %}
+          <div id='ally-result' class='battle-results'>
+              <div class='div-container'>
+                  <img class='main-images' src="{{ url_for('static', filename=ally.head_img) }}" title='{{ ally.head }}'>
+                  <img class='skill-images' src="{{ url_for('static', filename=ally.head_skill) }}">
+                  {% for sub in ally.head_subs %}
+                      <img class='sub-images' src="{{ url_for('static', filename=sub) }}">
+                  {% endfor %}
+              </div>
+              <div class='div-container'>
+                  <img class='main-images' src="{{ url_for('static', filename=ally.clothes_img) }}" title='{{ ally.clothes }}'>
+                  <img class='skill-images' src="{{ url_for('static', filename=ally.clothes_skill) }}">
+                  {% for sub in ally.clothes_subs %}
+                      <img class='sub-images' src="{{ url_for('static', filename=sub) }}">
+                  {% endfor %}
+              </div>
+              <div class='div-container'>
+                  <img class='main-images' src="{{ url_for('static', filename=ally.shoes_img) }}" title='{{ ally.shoes }}'>
+                  <img class='skill-images' src="{{ url_for('static', filename=ally.shoes_skill) }}">
+                  {% for sub in ally.shoes_subs %}
+                      <img class='sub-images' src="{{ url_for('static', filename=sub) }}">
+                  {% endfor %}
+              </div>
+              <div class='gear-container'>
+                  <img class='weapon_images' src="{{ url_for('static', filename=ally.weapon_img) }}">
+                  <img class='weapon_details' src="{{ url_for('static', filename=ally.weapon_sub) }}">
+                  <img class='weapon_details' src="{{ url_for('static', filename=ally.weapon_special) }}">
+              </div>
+              <div>
+                  <table class='battle-data'>
+                      <tr>
+                        <td>Name: {{ ally.name }}</td>
+                        <td>Level: {{ ally.level }}</td>
+                      </tr>
+                      <tr>
+                        <td>Splats: {{ ally.kills }}</td>
+                        <td>Turf Inked: {{ ally.turf_inked }}</td>
+                      </tr>
+                      <tr>
+                          <td>Deaths: {{ ally.deaths }}</td>
+                          <td>Assists: {{ ally.assists }}</td>
+                      </tr>
+                      <tr>
+                          <td>Specials: {{ ally.specials }}</td>
+                      </tr>
+                  </table>
+              </div>
+          </div>
+      {% endfor %}
+    </div>
+  {% block footer %} {{ super() }} {% endblock %}
+  </div>
+{% endblock %}

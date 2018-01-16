@@ -1,0 +1,236 @@
+@font-face {
+  font-family: Paintball;
+  src: url('fonts/Paintball_Beta_3.ttf')
+}
+
+/* Universal */
+
+body {
+    background-image: url('backgrounds/bg-wavy.png');
+    font-family: "Paintball", "Comic Sans MS", sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+    color: orange;
+}
+
+.content-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 1300px;
+}
+
+.index {
+    color: white;
+    border: 10px double gray;
+    height: 900px;
+}
+
+.viewer-home {
+    padding: 5px;
+    height: auto;
+}
+
+.viewer-indiv {
+    border: 10px double gray;
+}
+
+.footer {
+    flex: 0 1 100%;
+    width: 90%;
+    text-align: center;
+    color: white;
+    border: 5px double white;
+}
+
+.close {
+    padding: 10px;
+}
+
+.popup {
+    display: none;
+    text-align: left;
+    background-color: #050d19;
+    border: 10px double #c8b9ce;
+    z-index: 101;
+    position: fixed;
+    width: 70%;
+    height: 60%;
+    padding: 15px;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    overflow: auto;
+    font-size: 19px;
+}
+
+.opacity-provider {
+    display: none;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    min-height: 100%;
+    opacity: 0.8;
+    filter: alpha(opacity=90);
+    position: fixed;
+    background: black;
+    z-index: 100;
+}
+
+/* Index */
+
+.index-wrappers {
+    flex: 0 1 50%;
+    margin: auto;
+    width: 50%;
+    height: auto;
+}
+
+
+#right-index-wrapper {
+    width: 45%;
+}
+
+.navi-buttons {
+    padding-left: 50px;
+}
+
+.help {
+    width: 80%;
+}
+
+.redirect-buttons {
+    font-family: "Paintball";
+    width: 80%;
+    height: 12%;
+    border: 2px solid white;
+    border-radius: 10px;
+    color: white;
+    background-color: #757474;
+    font-size: 2vw;
+}
+
+.form-inputs input {
+    width: 80%;
+    height: 20px;
+}
+
+/* Viewer Home */
+
+.results-wrapper {
+    flex: 0 1 72%;
+    width: 100%;
+    height: 700px;
+    border: 10px gray double;
+    border-radius: 10px;
+    overflow: auto;
+    background-color: #51577c;
+}
+
+.sidebar-wrapper {
+    flex: 0 1 20%;
+    padding-left: 10px;
+    padding-right: 20px;
+    color: white;
+    font-size: 1.2vw;
+}
+
+.results-wrapper, .sidebar-wrapper {margin: 5px;}
+
+.results th {
+    background-color: black;
+    color: white;
+    height: 30px;
+}
+
+.results {width: 100%;}
+.results a {color: #8e4c09;}
+.results tr {height: 26px;}
+.results .num-columns {width: 7%;}
+.results tr:nth-child(even) {background-color: #a5aff7;}
+.results tr:nth-child(odd) {background-color: #848dc9;}
+#stats {padding-top: 25px;}
+
+#id-display {
+    font-size: 1.3em;
+    color: #eddcec;
+}
+
+/* Individual Viewer */
+
+.indiv-wrappers {
+    padding: 2px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 33%;
+    height: auto;
+}
+
+#enemy-wrapper, #ally-wrapper {
+    flex: 0 1 39.5%;
+}
+
+#results-wrapper {
+    flex: 0 1 20%;
+    font-size: 20px;
+    color: #efb2ff;
+}
+
+#results-wrapper td {color: #efb2ff;}
+#enemy-wrapper {background-color: #e58d8b;}
+#ally-wrapper {background-color: #90f989;}
+
+.battle-results {
+    background-image: url('backgrounds/bg-stripes.png');
+    flex: 0 1 49%;
+    margin: 2px;
+    width: 49%;
+}
+
+#ally-result {background: repeating-linear-gradient(45deg,  #2a5109, #2a5109 30px, #1a3305 30px, #1a3305 60px);}
+#enemy-result {background: repeating-linear-gradient(45deg,  #680b0b, #680b0b 30px, #4f0707 30px, #4f0707 60px);}
+
+.gear-container {
+    display: inline-block;
+    width: 100%;
+}
+
+.main-images {
+    width: 25%;
+    height: auto;
+}
+
+.skill-images {
+    width: 17%;
+    height: auto;
+}
+
+.sub-images {
+    width: 13%;
+    height: auto;
+}
+
+.weapon_images {
+    width: 25%;
+    height: auto;
+}
+
+.weapon_details {
+    width: 17%;
+    height: auto;
+}
+
+.battle-data {
+    width: 100%;
+    font-family: "Paintball", sans-serif;
+    font-size: 20px;
+    color: white;
+    height: 75px;
+}
