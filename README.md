@@ -1,5 +1,5 @@
 # Splat2 Assistant
-This is an application created to help view player statistics and information on stages and SplatNet. Located at `splat2assistant.herokuapp.com`.
+This is an application created to help view player statistics and information on stages and SplatNet. Located at (splat2assistant.herokuapp.com)[http://splat2assistant.herokuapp.com/].
 
 Requires Python3 and the requests, Pillow, Flask, livereload, and WTForms modules.
 
